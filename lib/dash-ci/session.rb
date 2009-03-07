@@ -9,6 +9,11 @@ module CI
   
     def report!
       reporter.send :send_data_update
+      reporter.send :send_exceptions_update
+    end
+    
+    def error(e)
+      @session.exception_recorder.record(e)
     end
   
     private

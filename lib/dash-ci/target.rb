@@ -8,7 +8,13 @@ module CI
     # Run each of the build's suites, calling the appropriate instrumented
     # method for each respective outcome.
     def build!
-      suites.each { |suite| send(CI.clean(suite)) } ; finish!
+      suites.each do |suite|
+        begin; send(CI.clean(suite)); green!(suite)
+        rescue BrokenBuild => e
+          error(e)
+          fail!(suite)
+        end
+      end ; finish!
     end
     
     # Instrumented methods
@@ -29,6 +35,10 @@ module CI
     
     def suites
       self.class.suites
+    end
+    
+    def error(e)
+      session.error(e)
     end
     
     def reporter

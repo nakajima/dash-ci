@@ -26,7 +26,8 @@ module CI
         Fiveruns::Dash.register_recipe recipe, :url => 'http://dash.ci' do |recipe|
           klass.suites.each do |suite|
             puts '  - adding %s' % suite
-            recipe.time CI.clean(suite), :method => instrument(klass, CI.clean(suite))
+            method_id = instrument(klass, CI.clean(suite))
+            recipe.time CI.clean(suite), :method => method_id
           end
 
           recipe.counter :total_builds, :incremented_by => instrument(klass, 'build!')
@@ -66,8 +67,7 @@ module CI
       @klass.suites << suite
       @klass.class_eval do
         define_method(CI.clean(suite)) do
-          sym = system(command) ? :green! : :fail!
-          send(sym, suite)
+          system(command) or raise(BrokenBuild.new('%s suite failed.' % suite))
         end
       end
     end

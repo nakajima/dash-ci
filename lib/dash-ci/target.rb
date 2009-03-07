@@ -14,7 +14,7 @@ module CI
           error(e)
           fail!(suite)
         end
-      end ; finish!
+      end ; finish! ; report!
     end
     
     # Instrumented methods
@@ -28,6 +28,10 @@ module CI
     
     # Ensure data gets reported back to FiveRuns before process exits.
     def finish!
+      puts "Finished all suites."
+    end
+    
+    def report!
       session.report!
     end
     

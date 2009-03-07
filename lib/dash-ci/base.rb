@@ -30,7 +30,8 @@ module CI
             recipe.time CI.clean(suite), :method => method_id
           end
 
-          recipe.counter :total_builds, :incremented_by => instrument(klass, 'build!')
+          recipe.time    :total_time,   :method => 'CI.run'
+          recipe.counter :total_builds, :incremented_by => instrument(klass, 'finish!')
           recipe.counter :green_builds, :incremented_by => instrument(klass, 'green!')
           recipe.counter :broken_builds, :incremented_by => instrument(klass, 'fail!')
         end

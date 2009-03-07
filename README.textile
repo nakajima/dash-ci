@@ -1,3 +1,5 @@
-h1. dash-ci
+h1. Dash CI
+
+Metrics for continuous integration with FiveRuns Dash. Still pretty raw.
 
 (c) Copyright 2009 Pat Nakajima, released under MIT License.

@@ -1,6 +1,6 @@
 # Dash CI
 
-Metrics for continuous integration with FiveRuns Dash. Still pretty raw.
+Metrics for continuous integration with FiveRuns Dash ([dash.fiveruns.com](http://dash.fiveruns.com)). Still pretty raw.
 
 ## Usage (probably)
 

@@ -2,6 +2,8 @@
 
 Metrics for continuous integration with FiveRuns Dash ([dash.fiveruns.com](http://dash.fiveruns.com)). Still pretty raw.
 
+[View the RDoc](http://gitrdoc.com/nakajima/dash-ci/tree/master).
+
 ## Usage (probably)
 
 See [**ci.rb**](http://github.com/nakajima/sinatras-hat/blob/master/ci.rb) in my Sinatra's Hat project for how it's really used.
